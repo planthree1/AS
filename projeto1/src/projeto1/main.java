@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projeto1;
 import java.util.ArrayList;
 
 /**
- *
- * @author TiagoRodrigues
+ * AS - Project 1 ::
+ * The practical assignment I is focused on an architecture where concurrency (processes and threads) is key aspect.
+ * @author TiagoRodrigues and DanteMarinho
  */
 public class main {
 
@@ -17,16 +13,13 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+
         int number_farmers = 0;
         
         ArrayList<String> storehouse = new ArrayList<>();
         ArrayList<String> standing_area = new ArrayList<>();
         // decidir a estrutura de dados a utilizar para o caminho
         ArrayList<String> granary = new ArrayList<>();
-        
-        
-        
     }    
 }
 
