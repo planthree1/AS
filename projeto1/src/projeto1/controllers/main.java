@@ -37,7 +37,6 @@ public class main {
         
         // Calls a monitor with the amount of farmers and ste
         monitor newMonitor = new monitor(3, 5, 4);
-        newMonitor.Stop(true);
     }
     
     
