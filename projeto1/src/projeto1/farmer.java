@@ -4,20 +4,28 @@
  * and open the template in the editor.
  */
 package projeto1;
-
+import java.util.concurrent.ExecutorService; 
+import java.util.concurrent.Executors; 
+import java.util.concurrent.locks.ReentrantLock; 
 /**
  *
  * @author TiagoRodrigues
  */
-public class farmer {
+public class farmer implements  Runnable  {
     int max_steps;
     int timeout;
-    int corn_cobs;
     int position;
+    ReentrantLock re; 
         
-    public farmer(int max_steps, int timeout, int corn_cobs){
+    public farmer(int max_steps, int timeout, ReentrantLock re){
         this.max_steps = max_steps;
         this.timeout = timeout;
-        this.corn_cobs = corn_cobs;
+    }
+
+    
+    
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
