@@ -2,8 +2,8 @@ package projeto1;
 import java.util.ArrayList;
 
 /**
- * AS - Project 1 ::
- * The practical assignment I is focused on an architecture where concurrency (processes and threads) is key aspect.
+ * Arquitetura de Software - Project 1 ::
+ * The "practical assignment I" is focused on an architecture where concurrency (processes and threads) is key aspect.
  * @author TiagoRodrigues and DanteMarinho
  */
 public class main {
@@ -20,6 +20,18 @@ public class main {
         ArrayList<String> standing_area = new ArrayList<>();
         // decidir a estrutura de dados a utilizar para o caminho
         ArrayList<String> granary = new ArrayList<>();
+        
+        // Open Control Center Window
+        FrameControlCenter controlCenter = new FrameControlCenter();
+        controlCenter.pack();
+        controlCenter.setLocation(300, 100);
+        controlCenter.setVisible(true);
+        
+        // Open Farm Infrasructure Window
+        FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
+        farmInfrastructure.pack();
+        farmInfrastructure.setLocation(300, 340);
+        farmInfrastructure.setVisible(true);
     }    
 }
 
