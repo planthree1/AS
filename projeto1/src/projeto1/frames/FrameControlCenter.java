@@ -4,15 +4,24 @@
  * and open the template in the editor.
  */
 package projeto1.frames;
+// import projeto1.frames.FrameFarmInfrastructure;
+
+import javax.swing.JTextArea;
 
 /**
  *
  * @author dantiii
  */
 public class FrameControlCenter extends javax.swing.JFrame {
+    
+    public static int numFarmers; // [2, 5]
+    public static int numSteps; // [1, 2]
+    public static int timeout; // {0, 100, 250, 500, 1000}
+    public static int numCornCobs;
 
     /**
-     * Creates new form FrameControlCenter
+     * Creates new form FrameCont * @author dantiii
+rolCenter
      */
     public FrameControlCenter() {
         initComponents();
@@ -34,7 +43,7 @@ public class FrameControlCenter extends javax.swing.JFrame {
         textNumCornCobs = new javax.swing.JTextField();
         textMaxStep = new javax.swing.JTextField();
         textTimeout = new javax.swing.JTextField();
-        textNumFarmers1 = new javax.swing.JTextField();
+        textNumFarmers = new javax.swing.JTextField();
         btnPrepare = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
         btnCollect = new javax.swing.JButton();
@@ -46,23 +55,20 @@ public class FrameControlCenter extends javax.swing.JFrame {
         setTitle("Control Center");
         setResizable(false);
 
-        jLabel1.setText("Number pf corn cobs:");
+        jLabel1.setText("Number of corn cobs:");
 
-        jLabel2.setText("Number of corn cobs:");
+        jLabel2.setText("Number of farmers:");
 
         jLabel3.setText("Timeout:");
 
         jLabel4.setText("Max. step:");
 
-        textNumCornCobs.setEditable(false);
-
-        textMaxStep.setEditable(false);
-
-        textTimeout.setEditable(false);
-
-        textNumFarmers1.setEditable(false);
-
         btnPrepare.setText("Prepare");
+        btnPrepare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrepareActionPerformed(evt);
+            }
+        });
 
         btnStart.setText("Start");
 
@@ -83,35 +89,33 @@ public class FrameControlCenter extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(14, 14, 14)
-                        .addComponent(textTimeout, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPrepare)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnCollect, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPrepare)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCollect, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textNumCornCobs, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textNumCornCobs, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(textNumFarmers1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(8, 8, 8)
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textMaxStep, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(10, 10, 10)
+                                    .addComponent(textNumFarmers, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textTimeout, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(8, 8, 8)
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(textMaxStep, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnStop, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,7 +132,7 @@ public class FrameControlCenter extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(textMaxStep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textNumFarmers1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textNumFarmers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -145,6 +149,15 @@ public class FrameControlCenter extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrepareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrepareActionPerformed
+        numFarmers = Integer.parseInt(textNumFarmers.getText());
+        System.out.println("Num farmers: " + numFarmers);
+        // FrameFarmInfrastructure.prepare(numFarmers);
+        
+        FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
+        farmInfrastructure.prepare(numFarmers);
+    }//GEN-LAST:event_btnPrepareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +207,7 @@ public class FrameControlCenter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField textMaxStep;
     private javax.swing.JTextField textNumCornCobs;
-    private javax.swing.JTextField textNumFarmers1;
+    private javax.swing.JTextField textNumFarmers;
     private javax.swing.JTextField textTimeout;
     // End of variables declaration//GEN-END:variables
 }

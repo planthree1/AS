@@ -1,7 +1,7 @@
 package projeto1.controllers;
 import java.util.ArrayList;
-import java.io.*; 
-import java.util.*; 
+import projeto1.frames.FrameControlCenter;
+import projeto1.frames.FrameFarmInfrastructure; 
 
 /**
  * Arquitetura de Software - Project 1 ::
@@ -24,22 +24,20 @@ public class main {
         ArrayList<String> granary = new ArrayList<>();
         
         // Open Control Center Window
-        //FrameControlCenter controlCenter = new FrameControlCenter();
-        // controlCenter.pack();
-        // controlCenter.setLocation(300, 100);
-        // controlCenter.setVisible(true);
+        FrameControlCenter controlCenter = new FrameControlCenter();
+         controlCenter.pack();
+         controlCenter.setLocation(300, 100);
+         controlCenter.setVisible(true);
         
         // Open Farm Infrasructure Window
-        //FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
-        //farmInfrastructure.pack();
-        //farmInfrastructure.setLocation(300, 340);
-        //farmInfrastructure.setVisible(true);
+        FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
+        farmInfrastructure.pack();
+        farmInfrastructure.setLocation(300, 340);
+        farmInfrastructure.setVisible(true);
         
         // Calls a monitor with the amount of farmers and ste
         monitor newMonitor = new monitor(3, 5, 4);
     }
-    
-    
 }
 
 

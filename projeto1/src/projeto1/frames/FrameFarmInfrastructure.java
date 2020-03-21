@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projeto1.frames;
 
 /**
@@ -16,6 +11,43 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
      */
     public FrameFarmInfrastructure() {
         initComponents();
+        storeHouse1.setText("A"); // funciona
+    }
+    
+    // Esta funcao está sendo chamado por uma classe de uma outra JFrame
+    public void prepare(int numFarmers) {
+        storeHouse1.setText("B"); // nao funciona
+        System.out.println("\nRecebido: " + numFarmers); // funciona
+
+        for (int i = 1; i <= numFarmers; i++) {
+
+            if (i == 1) {
+                System.out.println("Entrei no if == 1"); // funciona
+                storeHouse1.setText("C"); // <--- não funciona!!!
+            }
+
+            // ...
+
+            if (i == 2) {
+                System.out.println("alterou 2");
+                storeHouse1.setText("2");
+            }
+
+            if (i == 3) {
+                System.out.println("alterou 3");
+                storeHouse1.setText("E");
+            }
+
+            if (i == 4) {
+                System.out.println("alterou 4");
+                storeHouse1.setText("4");
+            }
+
+            if (i == 5) {
+                System.out.println("alterou 5");
+                storeHouse1.setText("5");
+            }
+        }
     }
 
     /**
@@ -28,12 +60,12 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        farmer1 = new javax.swing.JTextField();
+        storeHouse1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        farmer2 = new javax.swing.JTextField();
-        farmer3 = new javax.swing.JTextField();
-        farmer4 = new javax.swing.JTextField();
-        farmer5 = new javax.swing.JTextField();
+        storeHouse2 = new javax.swing.JTextField();
+        storeHouse3 = new javax.swing.JTextField();
+        storeHouse4 = new javax.swing.JTextField();
+        storeHouse5 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         standinArea1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -106,37 +138,32 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
-        farmer1.setEditable(false);
-        farmer1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        farmer1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        farmer1.setText("1");
-        farmer1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        storeHouse1.setEditable(false);
+        storeHouse1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        storeHouse1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        storeHouse1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setText("Storehouse");
 
-        farmer2.setEditable(false);
-        farmer2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        farmer2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        farmer2.setText("2");
-        farmer2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        storeHouse2.setEditable(false);
+        storeHouse2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        storeHouse2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        storeHouse2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        farmer3.setEditable(false);
-        farmer3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        farmer3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        farmer3.setText("3");
-        farmer3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        storeHouse3.setEditable(false);
+        storeHouse3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        storeHouse3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        storeHouse3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        farmer4.setEditable(false);
-        farmer4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        farmer4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        farmer4.setText("4");
-        farmer4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        storeHouse4.setEditable(false);
+        storeHouse4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        storeHouse4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        storeHouse4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        farmer5.setEditable(false);
-        farmer5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        farmer5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        farmer5.setText("5");
-        farmer5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        storeHouse5.setEditable(false);
+        storeHouse5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        storeHouse5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        storeHouse5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,11 +176,11 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(farmer2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(farmer1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(farmer3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(farmer4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(farmer5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(storeHouse2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(storeHouse1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(storeHouse3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(storeHouse4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(storeHouse5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,15 +189,15 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(12, 12, 12)
-                .addComponent(farmer1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(storeHouse1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(farmer2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(storeHouse2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(farmer3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(storeHouse3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(farmer4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(storeHouse4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(farmer5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(storeHouse5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -823,11 +850,6 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField farmer1;
-    private javax.swing.JTextField farmer2;
-    private javax.swing.JTextField farmer3;
-    private javax.swing.JTextField farmer4;
-    private javax.swing.JTextField farmer5;
     private javax.swing.JTextField granary1;
     private javax.swing.JTextField granary2;
     private javax.swing.JTextField granary3;
@@ -896,5 +918,10 @@ public class FrameFarmInfrastructure extends javax.swing.JFrame {
     private javax.swing.JTextField standinArea3;
     private javax.swing.JTextField standinArea4;
     private javax.swing.JTextField standinArea5;
+    private javax.swing.JTextField storeHouse1;
+    private javax.swing.JTextField storeHouse2;
+    private javax.swing.JTextField storeHouse3;
+    private javax.swing.JTextField storeHouse4;
+    private javax.swing.JTextField storeHouse5;
     // End of variables declaration//GEN-END:variables
 }
