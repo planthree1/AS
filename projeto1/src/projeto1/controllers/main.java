@@ -18,22 +18,19 @@ public class main {
 
         int number_farmers = 0;
         
-        ArrayList<String> storehouse = new ArrayList<>();
-        ArrayList<String> standing_area = new ArrayList<>();
         // decidir a estrutura de dados a utilizar para o caminho
-        ArrayList<String> granary = new ArrayList<>();
         
         // Open Control Center Window
-        FrameControlCenter controlCenter = new FrameControlCenter();
-         controlCenter.pack();
-         controlCenter.setLocation(300, 100);
-         controlCenter.setVisible(true);
+        //FrameControlCenter controlCenter = new FrameControlCenter();
+        //controlCenter.pack();
+        //controlCenter.setLocation(300, 100);
+        //controlCenter.setVisible(true);
         
         // Open Farm Infrasructure Window
-        FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
-        farmInfrastructure.pack();
-        farmInfrastructure.setLocation(300, 340);
-        farmInfrastructure.setVisible(true);
+        //FrameFarmInfrastructure farmInfrastructure = new FrameFarmInfrastructure();
+        //farmInfrastructure.pack();
+        //farmInfrastructure.setLocation(300, 340);
+        //farmInfrastructure.setVisible(true);
         
         // Calls a monitor with the amount of farmers and ste
         monitor newMonitor = new monitor(3, 5, 4);

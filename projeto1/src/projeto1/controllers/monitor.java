@@ -18,18 +18,26 @@ import static projeto1.controllers.work.MAX_T;
  */
 public class monitor {
     // We are using this
+    int row = 4;
+    int column = 10;
     int nFarmers;
     int maxSteps;
     int timeOut;
-    String teste = "teste";
+    boolean stop = false;
+    int[][] matrix = new int[row][column];
 
-    public void setTeste(String teste) {
-        this.teste = teste;
+    public int[][] getMatrix() {
+        return matrix;
     }
 
-    public String getTeste() {
-        return teste;
+    public void setMatrix(int[][] matrix) {
+        this.matrix = matrix;
     }
+
+    public boolean isStop() {
+        return stop;
+    }
+    
     
     
     // locks
@@ -37,23 +45,27 @@ public class monitor {
     ReentrantLock rel = new ReentrantLock(); 
     ExecutorService pool = Executors.newFixedThreadPool(MAX_T);    
     
-    public monitor(int nFarmers, int maxSteps, int timeOut){
+    public monitor(int nFarmers, int maxSteps, int timeOut) throws InterruptedException{
         this.nFarmers = nFarmers;
         this.maxSteps = maxSteps;
         this.timeOut = timeOut;
         
-        int[][] matrix = new int[nFarmers][nFarmers];
-        
+        print2D(matrix);
         System.out.println("number of farmers: " + nFarmers);
         
-        Runnable w1 = new work(rel, "1", maxSteps, this);
-        Runnable w2 = new work(rel, "2", maxSteps, this);
-        Runnable w3 = new work(rel, "3", maxSteps, this);
-        Runnable w4 = new work(rel, "4", maxSteps, this);
-        pool.execute(w1);
-        pool.execute(w2);
-        pool.execute(w3);
-        pool.execute(w4);
+        Runnable w1 = new work(rel, 1, maxSteps, this);
+        Runnable w2 = new work(rel, 2, maxSteps, this);
+        Runnable w3 = new work(rel, 3, maxSteps, this);
+        Runnable w4 = new work(rel, 4, maxSteps, this);
+        
+        for (int i = 0; i < 9; i++){
+            pool.execute(w1);
+            pool.execute(w2);
+            pool.execute(w3);
+            pool.execute(w4);
+            Thread.sleep(1500);
+        }
+        
         pool.shutdown();
         
     }
@@ -63,5 +75,16 @@ public class monitor {
         for (int[] row : mat){
             System.out.println(Arrays.toString(row));
         } 
+    }
+    
+    public static int[][] ClearLastStep(int x,int[][] matrix, int id){
+        for (int j = 0; j < 4; j++) {
+            if (matrix[j][x-1] == id){
+                matrix[j][x-1] = 0;
+                
+            }
+        }
+        
+        return matrix;
     }
 }
