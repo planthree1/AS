@@ -50,9 +50,6 @@ public class monitor {
         this.maxSteps = maxSteps;
         this.timeOut = timeOut;
         
-        print2D(matrix);
-        System.out.println("number of farmers: " + nFarmers);
-        
         Runnable w1 = new work(rel, 1, maxSteps, this);
         Runnable w2 = new work(rel, 2, maxSteps, this);
         Runnable w3 = new work(rel, 3, maxSteps, this);
@@ -63,7 +60,6 @@ public class monitor {
             pool.execute(w2);
             pool.execute(w3);
             pool.execute(w4);
-            Thread.sleep(1500);
         }
         
         pool.shutdown();
