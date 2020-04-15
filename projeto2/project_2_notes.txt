@@ -1,0 +1,11 @@
+Arquitetura de software
+
+projeto 2:
+
+Links::
+https://kafka.apache.org/intro		kafka documentation
+https://www.youtube.com/watch?v=JalUUBKdcA0&t=962s	kafka guide
+https://stackoverflow.com/questions/34081336/classpath-is-empty-please-build-the-project-first		install kafka
+http://kafka.apache.org/documentation.html#introduction		run kafka
+https://stackoverflow.com/questions/55494988/why-is-kafka-not-creating-a-topic-bootstrap-server-is-not-a-recognized-option	--boostrap error runing creating a topic
+https://dzone.com/articles/kafka-producer-and-consumer-example
