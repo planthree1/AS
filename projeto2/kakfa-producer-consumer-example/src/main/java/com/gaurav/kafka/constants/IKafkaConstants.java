@@ -7,7 +7,13 @@ public interface IKafkaConstants {
 	
 	public static String CLIENT_ID="client1";
 	
-	public static String TOPIC_NAME="demo";
+	public static String TOPIC_NAME="CollectEntity";
+	
+	public static String TOPIC_NAME_BATCH="BatchTopic";
+	
+	public static String TOPIC_NAME_REPORT="ReportTopic";
+	
+	public static String TOPIC_NAME_ALARM="AlarmTopic";
 	
 	public static String GROUP_ID_CONFIG="consumerGroup10";
 	

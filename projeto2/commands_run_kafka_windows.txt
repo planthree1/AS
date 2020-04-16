@@ -8,3 +8,13 @@ bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replic
 
 
 bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+LIST ALL TOPICS :
+
+bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+DELETE A TOPIC :
+
+CONSUMER :
+
+bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic AlarmTopic --from-beginning
