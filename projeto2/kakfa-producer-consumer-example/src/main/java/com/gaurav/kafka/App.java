@@ -29,7 +29,6 @@ public class App {
 //		ArrayList<ArrayList<String>> result = splitInfo(car_info);
 		
 		runProducer(splitInfo(car_info));
-//		runConsumer();
 	}
 	
 	static ArrayList<ArrayList<String>> splitInfo(ArrayList<String> car_info) {
@@ -77,31 +76,7 @@ public class App {
 		return result;
 	}
 
-	static void runConsumer() {
-		Consumer<Long, String> consumer = ConsumerCreator.createConsumer();
 
-		int noMessageToFetch = 0;
-
-		while (true) {
-			final ConsumerRecords<Long, String> consumerRecords = consumer.poll(1000);
-			if (consumerRecords.count() == 0) {
-				noMessageToFetch++;
-				if (noMessageToFetch > IKafkaConstants.MAX_NO_MESSAGE_FOUND_COUNT)
-					break;
-				else
-					continue;
-			}
-
-			consumerRecords.forEach(record -> {
-				System.out.println("Record Key " + record.key());
-				System.out.println("Record value " + record.value());
-				System.out.println("Record partition " + record.partition());
-				System.out.println("Record offset " + record.offset());
-			});
-			consumer.commitAsync();
-		}
-		consumer.close();
-	}
 
 	static void runProducer(ArrayList<ArrayList<String>> result) {
 		
@@ -133,7 +108,6 @@ public class App {
 			}
 	    	a++;
 	    }
-	    
 	    
 	    int b = 0;
 	    for (String info: ReportTopic) {
@@ -181,33 +155,6 @@ public class App {
 			}	
 			c++;
 		}
-	    
-	    
-	    
-		    
-		// change the size
-		/*
-		for (int index = 0; index < 10 ; index++) {
-			
-			
-			final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(IKafkaConstants.TOPIC_NAME_BATCH, car_info.get(index));
 
-			System.out.println("record: " + record.toString());
-			
-			try {
-				
-				RecordMetadata metadata = producer.send(record).get();
-				System.out.println("Record sent with key " + index + " to partition " + metadata.partition()
-						+ " with offset " + metadata.offset());
-				
-			} catch (ExecutionException e) {
-				System.out.println("Error in sending record");
-				System.out.println(e);
-			} catch (InterruptedException e) {
-				System.out.println("Error in sending record");
-				System.out.println(e);
-			}	
-		}
-		*/
 	}
 }

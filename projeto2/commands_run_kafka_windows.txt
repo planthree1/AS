@@ -18,3 +18,7 @@ DELETE A TOPIC :
 CONSUMER :
 
 bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic AlarmTopic --from-beginning
+
+CREATE TOPIC :
+
+bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic BatchTopic
