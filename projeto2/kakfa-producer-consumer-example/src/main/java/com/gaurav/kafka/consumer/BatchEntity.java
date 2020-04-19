@@ -15,9 +15,7 @@ public class BatchEntity {
 	// Init GUI variable
 	public static BatchEntityFrame batchFrame = new BatchEntityFrame();
 
-	public static void main(String[] args) {
-		System.out.println("Running batchEntityConsumer");
-		
+	public static void main(String[] args) {		
 		batchFrame.setVisible(true);
 		batchFrame.setLocationRelativeTo(null);
 		

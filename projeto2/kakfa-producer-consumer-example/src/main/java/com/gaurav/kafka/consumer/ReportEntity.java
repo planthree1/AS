@@ -11,9 +11,14 @@ import com.gaurav.kafka.constants.IKafkaConstants;
 import writers.write_file;
 
 public class ReportEntity {
+	
+	// Init GUI variable
+	public static ReportEntityFrame reportFrame = new ReportEntityFrame();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		reportFrame.setVisible(true);
+		reportFrame.setLocationRelativeTo(null);
+		
 		reportEntityConsumer();
 	}
 	
@@ -46,6 +51,11 @@ public class ReportEntity {
 				System.out.println("Record partition " + record.partition());
 				System.out.println("Record offset " + record.offset());
 				*/
+				
+				String output = record.key() + " - " + record.value() + " - " + record.partition() + " - " + record.offset();
+				String actualText = reportFrame.getTxtOutput();
+				String newText = "" + actualText + "\n" + output + "";
+				reportFrame.setTxtOutput(newText);
 			});
 			consumer.commitAsync();
 		}
