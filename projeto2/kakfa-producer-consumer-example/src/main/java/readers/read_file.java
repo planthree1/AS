@@ -24,7 +24,12 @@ public class read_file {
 		
 		try {
 			
-			RandomAccessFile file = new RandomAccessFile("H:\\Eclipse\\kakfa-producer-consumer-example\\src\\main\\java\\readers\\example.txt", "r");
+			String path = System.getProperty("user.dir");
+			String exampleFile_path = System.getProperty("os.name").equals("Linux") ?
+					path +  "/src/main/java/readers/example.txt" :
+					path +  "\\src\\main\\java\\readers\\example.txt";
+			
+			RandomAccessFile file = new RandomAccessFile(exampleFile_path, "r");
 			String str;
 			while ((str = file.readLine()) != null) {
 				data.add(str);

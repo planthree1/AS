@@ -12,7 +12,11 @@ public class write_file {
 
 	private static void CreateFile(String filename) {
 		String path = System.getProperty("user.dir");
-		String  full_path = path +  "\\src\\main\\java\\data\\";
+		String full_path = System.getProperty("os.name").equals("Linux") ?
+				path +  "/src/main/java/data/" :
+				path +  "\\src\\main\\java\\data\\";
+		
+		// System.getProperty("os.name")
 		try {
 		      File myObj = new File(full_path, filename);
 		      if (myObj.createNewFile()) {
@@ -31,10 +35,12 @@ public class write_file {
 	
 	public static void WriteFile(String data, String filename) throws IOException {
 		String path = System.getProperty("user.dir");
-		String  full_path = path +  "\\src\\main\\java\\data\\";
+		String full_path = System.getProperty("os.name").equals("Linux") ?
+				path +  "/src/main/java/data/" :
+				path +  "\\src\\main\\java\\data\\";
 		
 		CreateFile(filename);
-		
+		System.out.println("writing file");
 		try {
 	      FileWriter myWriter = new FileWriter(full_path + filename, true);
 	      

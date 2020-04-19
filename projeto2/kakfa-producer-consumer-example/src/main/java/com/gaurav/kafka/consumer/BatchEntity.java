@@ -11,9 +11,16 @@ import com.gaurav.kafka.constants.IKafkaConstants;
 import writers.*;
 
 public class BatchEntity {
+	
+	// Init GUI variable
+	public static BatchEntityFrame batchFrame = new BatchEntityFrame();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		System.out.println("Running batchEntityConsumer");
+		
+		batchFrame.setVisible(true);
+		batchFrame.setLocationRelativeTo(null);
+		
 		batchEntityConsumer();
 	}
 	
@@ -33,24 +40,23 @@ public class BatchEntity {
 					continue;
 			}
 			
-			
-			
 			consumerRecords.forEach(record -> {
 				try {
 					write_file.WriteFile(record.value(), "BATCH.txt");
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				/*
-				System.out.println("Record Key " + record.key());
+				System.out.println("\nRecord Key " + record.key());
 				System.out.println("Record value " + record.value());
 				System.out.println("Record partition " + record.partition());
 				System.out.println("Record offset " + record.offset());
 				*/
+				String output = record.key() + " - " + record.value() + " - " + record.partition() + " - " + record.offset();
+				String actualText = batchFrame.getTxtOutput();
+				String newText = "" + actualText + "\n" + output + "";
+				batchFrame.setTxtOutput(newText);				
 			});
-			
-			
 			consumer.commitAsync();
 		}
 		consumer.close();
