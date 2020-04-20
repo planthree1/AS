@@ -8,6 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 
 import constants.IKafkaConstants;
 import consumer.ConsumerCreator;
+import consumer.ConsumerCreatorAlarm;
 import writers.WriteFile;
 
 public class AlarmEntity {
@@ -24,7 +25,7 @@ public class AlarmEntity {
 	
 	static void alarmEntityConsumer() {
 		
-		Consumer<Long, String> consumer = ConsumerCreator.createConsumer();
+		Consumer<Long, String> consumer = ConsumerCreatorAlarm.createConsumer();
 		consumer.subscribe(Collections.singletonList(IKafkaConstants.TOPIC_NAME_ALARM));
 
 		int noMessageToFetch = 0;

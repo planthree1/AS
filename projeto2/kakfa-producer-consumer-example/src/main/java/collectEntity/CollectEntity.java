@@ -66,14 +66,15 @@ public class CollectEntity {
 		
 		
 		// PUBLISHES messages to AlarmTopic
-
+		Producer<Long, String> producerAlarm = ProducerCreatorAlarm.createProducer();
+		
 	    for (String info: AlarmTopic) {
 	    	
 			final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(IKafkaConstants.TOPIC_NAME_ALARM, info);
 		
 			try {
 				
-				producer.send(record).get();
+				producerAlarm.send(record).get();
 				System.out.println("message published in : " + IKafkaConstants.TOPIC_NAME_ALARM);
 			} catch (ExecutionException e) {
 				System.out.println("Error in sending record");
@@ -105,14 +106,14 @@ public class CollectEntity {
 	    }
 
 	    // PUBLISHES messages to BatchTopic
-
+		Producer<Long, String> producerBatch = ProducerCreatorBatch.createProducer();
 		for (String info: BatchTopic) {
 			
 			final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(IKafkaConstants.TOPIC_NAME_BATCH, info);
 
 			try {
 				
-				producer.send(record).get();
+				producerBatch.send(record).get();
 				System.out.println("message published in : " + IKafkaConstants.TOPIC_NAME_BATCH);
 			} catch (ExecutionException e) {
 				System.out.println("Error in sending record");

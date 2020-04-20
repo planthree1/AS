@@ -8,6 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 
 import constants.IKafkaConstants;
 import consumer.ConsumerCreator;
+import consumer.ConsumerCreatorBatch;
 import writers.WriteFile;
 
 public class BatchEntity {
@@ -23,7 +24,7 @@ public class BatchEntity {
 	}
 	
 	static void batchEntityConsumer() {
-		Consumer<Long, String> consumer = ConsumerCreator.createConsumer();
+		Consumer<Long, String> consumer = ConsumerCreatorBatch.createConsumer();
 		consumer.subscribe(Collections.singletonList(IKafkaConstants.TOPIC_NAME_BATCH));
 		
 		int noMessageToFetch = 0;
