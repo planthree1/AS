@@ -11,9 +11,14 @@ import com.gaurav.kafka.constants.IKafkaConstants;
 import writers.write_file;
 
 public class AlarmEntity {
+	
+	// Init Alarm GUI variable
+	public static AlarmEntityFrame alarmFrame = new AlarmEntityFrame();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		alarmFrame.setVisible(true);
+		alarmFrame.setLocationRelativeTo(null);
+		
 		alarmEntityConsumer();
 	}
 	
@@ -36,18 +41,28 @@ public class AlarmEntity {
 
 			System.out.println("here");
 			consumerRecords.forEach(record -> {
+				
+				System.out.println(record.toString());
 				String[] output = record.value().split("\\|");
 				int velocity = Integer.parseInt(output[4]);
+
+				String status = "";
 				if (velocity > 120) {
+					status = "ko";
 					System.out.println("ko");
 				} else {
+					status = "ok";
 					System.out.println("ok");
 				}
 				
+				// Send message to Alarm GUI
+				String output_msg = record.key() + " - " + record.value() + " - " + record.partition() + " - " + record.offset() + " - status: " + status;
+				String actualText = alarmFrame.getTxtOutput();
+				String newText = "" + actualText + "\n" + output_msg + "";
+				alarmFrame.setTxtOutput(newText);
 			});
 			consumer.commitAsync();
 		}
 		consumer.close();
 	}
-
 }
