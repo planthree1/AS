@@ -5,6 +5,8 @@
  */
 package ClientHandler;
 
+import static Server.Server.serverFrame;
+import Server.ServerFrame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,6 +14,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static Server.Server.writeMessageToServerFrame;
 
 /**
  *
@@ -24,6 +27,7 @@ public class ClientHandlerThread implements Runnable{
     private Socket client;
     private BufferedReader in;
     private PrintWriter out;
+    // public static ServerFrame serverFrame = new ServerFrame();
 
     public ClientHandlerThread(Socket loadBalancer) throws IOException{
         this.client = loadBalancer;
@@ -37,11 +41,15 @@ public class ClientHandlerThread implements Runnable{
         try{
             while(true){
                 String request = in.readLine();
+                System.out.println("ClientHandlerThread :: ");
                 System.out.println(request);
+                writeMessageToServerFrame("Precessing request: " + request);
                 
                 // mudar este if para aceitar o formato | client id | request id | 01 | number of iterations |
                 if (request.contains("pi")){
-                    out.println(getPiValue(2));
+                    double response = getPiValue(2);
+                    writeMessageToServerFrame("Sending response: " + response);
+                    out.println(response);
                     out.println("asdas");
                 } else {
                     out.println("type pi");

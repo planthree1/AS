@@ -22,22 +22,35 @@ import java.util.concurrent.Executors;
  * @author TiagoRodrigues
  */
 public class Server {
-    
+
     private static ArrayList<ClientHandlerThread> clients = new ArrayList<ClientHandlerThread>();
     private static ExecutorService pool = Executors.newFixedThreadPool(4);
-    
+    public static ServerFrame serverFrame = new ServerFrame();
+
+    public static void writeMessageToServerFrame(String message) {
+        String actualText = serverFrame.getTxtMessages();
+        String newText = "" + actualText + "\n" + message + "";
+        serverFrame.setTxtMessages(newText);
+        System.out.println(message);
+    }
+
     public static void main(String[] args) throws IOException {
-        
+
+        // Init GUI
+        serverFrame.setVisible(true);
+        serverFrame.setLocationRelativeTo(null);
+
         ServerSocket listener = new ServerSocket(Constants.serverPort);
-        System.out.println("[SERVER] waiting for client connection...");
+        writeMessageToServerFrame("[SERVER] waiting for client connection...");
+
         Socket client = listener.accept();
-        System.out.println("[SERVER] connected to client!.");
-        
+        writeMessageToServerFrame("[SERVER] connected to client!.");
+
         ClientHandlerThread clientThread = new ClientHandlerThread(client);
         clients.add(clientThread);
-        
+
         // Cria uma thread para cada mensagem recebida por um cliente 
         pool.execute(clientThread);
     }
-    
+
 }
